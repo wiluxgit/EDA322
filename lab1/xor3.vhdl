@@ -15,8 +15,8 @@ architecture structural of E_xor3 is
 	signal xor1with2: STD_LOGIC;
 	component E_xor
 		port(
+			xor_i0: in STD_LOGIC;
 			xor_i1: in STD_LOGIC;
-			xor_i2: in STD_LOGIC;
 			xor_out: out STD_LOGIC
 		);	
 	end component;
@@ -24,15 +24,15 @@ architecture structural of E_xor3 is
 		--signal A,B,C,U1_out are local wires
 		U1: entity work.E_xor(structural)
 		port map(
-			xor_i1 => xor3_i1, 		--connect wire "xor3_i1" with xor2 input
-			xor_i2 => xor3_i2, 
+			xor_i0 => xor3_i1, 		--connect wire "xor3_i1" with xor2 input
+			xor_i1 => xor3_i2, 
 			xor_out => xor1with2
 		);
 		--port map (xor3_i1, xor3_i2, xor1with2) does the same thing, be careful with the order
 		U2: entity work.E_xor(structural)
 		port map(
-			xor_i1 => xor3_i3,
-			xor_i2 => xor1with2, 
+			xor_i0 => xor3_i3,
+			xor_i1 => xor1with2, 
 			xor_out => xor3_out
 		);
 		
