@@ -1,36 +1,5 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
-entity E_xor is
-	port(
-		xor_i1: in STD_LOGIC;
-		xor_i2: in STD_LOGIC;
-		xor_out: out STD_LOGIC
-	);
-end E_xor;
-
-architecture structural of E_xor is
-	begin
-		xor_out <= xor_i1 XOR xor_i1;
-end structural;
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-entity E_nand is
-	port(
-		nand_i1: in STD_LOGIC;
-		nand_i2: in STD_LOGIC;
-		nand_out: out STD_LOGIC
-	);
-end E_nand;
-
-architecture structural of E_nand is
-	begin
-		nand_out <= nand_i1 NAND nand_i1;
-end structural;
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
 entity E_mux4to1 is
 	port(
 		i0,i1,i2,i3: in STD_LOGIC;
