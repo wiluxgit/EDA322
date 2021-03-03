@@ -10,9 +10,9 @@ entity E_cmp_8bit is
 end E_cmp_8bit;
 
 architecture structural of E_cmp_8bit is
-	signal LOCAL_helper: STD_LOGIC;
+	signal l_helper: STD_LOGIC;
 	begin
-		LOCAL_helper <= 
+		l_helper <= 
 			(cmp_inpA(0) XNOR cmp_inpB(0)) AND
 			(cmp_inpA(1) XNOR cmp_inpB(1)) AND
 			(cmp_inpA(2) XNOR cmp_inpB(2)) AND
@@ -22,6 +22,6 @@ architecture structural of E_cmp_8bit is
 			(cmp_inpA(6) XNOR cmp_inpB(6)) AND
 			(cmp_inpA(7) XNOR cmp_inpB(7));
 			
-		cmp_eq <= LOCAL_helper;
-		cmp_neq <= NOT LOCAL_helper;
+		cmp_eq <= l_helper;
+		cmp_neq <= NOT l_helper;
 end structural;
