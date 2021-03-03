@@ -3,27 +3,29 @@ use IEEE.std_logic_1164.ALL;
 
 
 entity E_rca is
-	port (RCA_a	: in  STD_LOGIC_VECTOR(7 downto 0);
-	      RCA_b	: in  STD_LOGIC_VECTOR(7 downto 0);
-	      RCA_cin	: in  STD_LOGIC;
-	      RCA_sum	: out STD_LOGIC_VECTOR(7 downto 0);
-	      RCA_cout	: out STD_LOGIC
-	     );
+	port (
+		RCA_a		: in  STD_LOGIC_VECTOR(7 downto 0);
+		RCA_b		: in  STD_LOGIC_VECTOR(7 downto 0);
+		RCA_cin	: in  STD_LOGIC;
+		RCA_sum	: out STD_LOGIC_VECTOR(7 downto 0);
+		RCA_cout	: out STD_LOGIC
+	);
 end E_rca;
 
 
 architecture Structure of E_rca is
 
 	component E_fulladder
-		port (a		: in 	STD_LOGIC;
-	              b		: in	STD_LOGIC;
-	     	      cin	: in 	STD_LOGIC;
-		      s		: out	STD_LOGIC;
-	      	      cout	: out	STD_LOGIC
-  	    		     );
+		port (
+			a	: in	STD_LOGIC;
+			b	: in	STD_LOGIC;
+			cin	: in 	STD_LOGIC;
+			s	: out	STD_LOGIC;
+			cout: out	STD_LOGIC
+		);
 	end component;
 
-SIGNAL carry : STD_LOGIC_VECTOR(0 downto 6);
+SIGNAL carry : STD_LOGIC_VECTOR(6 downto 0);
 
 begin
 	E_fa0: E_fulladder PORT MAP(RCA_a(0), RCA_b(0), RCA_cin, RCA_sum(0), carry(0));
