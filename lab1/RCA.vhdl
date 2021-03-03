@@ -1,0 +1,35 @@
+library IEEE;
+use IEEE.std_logic_1164.ALL;
+
+
+entity E_rca is
+	port (RCA_a	: in  STD_LOGIC_VECTOR(7 downto 0);
+	      RCA_b	: in  STD_LOGIC_VECTOR(7 downto 0);
+	      RCA_cin	: in  STD_LOGIC;
+	      RCA_sum	: out STD_LOGIC_VECTOR(7 downto 0);
+	      RCA_cout	: out STD_LOGIC
+	     );
+end E_rca;
+
+
+architecture Structure of E_rca is
+
+	component E_fulladder
+		port (a		: in 	STD_LOGIC;
+	              b		: in	STD_LOGIC;
+	     	      cin	: in 	STD_LOGIC;
+		      s		: out	STD_LOGIC;
+	      	      cout	: out	STD_LOGIC
+  	    		     );
+	end component;
+
+
+begin
+	E_fa0: E_fulladder PORT MAP(RCA_a(0), RCA_b(0), RCA_cin, s(0), cout(0));
+	G1: for i in 1 to 6 generate
+		fulladders: E_fulladder PORT MAP (
+					RCA_a(i), RCA_b(i), cin(i), s(i), cout(i));
+	end generate;
+	E_fa7: E_fulladder PORT MAP(RCA_a(7), RCA_b(7), cin(7), s(7), RCA_cout);
+
+end Structure;
