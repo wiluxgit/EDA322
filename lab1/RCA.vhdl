@@ -23,7 +23,7 @@ architecture Structure of E_rca is
   	    		     );
 	end component;
 
-SIGNAL carry : STD_LOGIC_VECTOR(0 downto 6);
+SIGNAL carry : STD_LOGIC_VECTOR(6 downto 0);
 
 begin
 	E_fa0: E_fulladder PORT MAP(RCA_a(0), RCA_b(0), RCA_cin, RCA_sum(0), carry(0));

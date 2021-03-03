@@ -31,6 +31,6 @@ begin
 		fulladders: E_fulladder PORT MAP (
 					RCA_a(i), RCA_b(i), carry(i-1), RCA_sum(i), carry(i));
 	end generate;
-	E_fa7: E_fulladder PORT MAP(RCA_a(7), RCA_b(7), carry(6));
+	E_fa7: E_fulladder PORT MAP(RCA_a(7), RCA_b(7), carry(6), RCA_sum(7), RCA_cout);
 
 end Structure;
