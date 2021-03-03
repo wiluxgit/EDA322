@@ -13,7 +13,7 @@ entity E_rca is
 end E_rca;
 
 
-architecture Structure of E_rca is
+architecture structural of E_rca is
 
 	component E_fulladder
 		port (
@@ -28,11 +28,20 @@ architecture Structure of E_rca is
 SIGNAL carry : STD_LOGIC_VECTOR(6 downto 0);
 
 begin
-	E_fa0: E_fulladder PORT MAP(RCA_a(0), RCA_b(0), RCA_cin, RCA_sum(0), carry(0));
-	G1: for i in 1 to 6 generate
-		fulladders: E_fulladder PORT MAP (
-					RCA_a(i), RCA_b(i), carry(i-1), RCA_sum(i), carry(i));
+	E0: 
+	entity work.E_fulladder(structural)
+	port map(RCA_a(0), RCA_b(0), RCA_cin, RCA_sum(0), carry(0));
+	
+	E1_E6: 
+	for i in 1 to 6 generate
+		gen: 
+		entity work.E_fulladder(structural)
+		port map(RCA_a(i), RCA_b(i), carry(i-1), RCA_sum(i), carry(i));
 	end generate;
-	E_fa7: E_fulladder PORT MAP(RCA_a(7), RCA_b(7), carry(6), RCA_sum(7), RCA_cout);
+	
+	E7:
+	entity work.E_fulladder(structural)
+	PORT MAP(RCA_a(7), RCA_b(7), carry(6), RCA_sum(7), RCA_cout);
+	
 
-end Structure;
+end structural;

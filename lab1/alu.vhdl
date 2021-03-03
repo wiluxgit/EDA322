@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity E_alu_main is
+entity E_alu is
 	port(
 		ALU_inA: in STD_LOGIC_VECTOR(7 downto 0);
 		ALU_inB: in STD_LOGIC_VECTOR(7 downto 0);
@@ -12,9 +12,9 @@ entity E_alu_main is
 		ALU_eq: out STD_LOGIC;
 		ALU_neq: out STD_LOGIC
 	);
-end E_alu_main;
+end E_alu;
 
-architecture structural of E_alu_main is
+architecture structural of E_alu is
 	signal l_andOut: STD_LOGIC_VECTOR(7 downto 0);
 	signal l_notOut: STD_LOGIC_VECTOR(7 downto 0);
 	signal l_sumOut: STD_LOGIC_VECTOR(7 downto 0);
@@ -22,11 +22,11 @@ architecture structural of E_alu_main is
 	
 	component E_rca
 		port (
-			RCA_a	: in  STD_LOGIC_VECTOR(7 downto 0);
-			RCA_b	: in  STD_LOGIC_VECTOR(7 downto 0);
-			RCA_cin	: in  STD_LOGIC;
-			RCA_sum	: out STD_LOGIC_VECTOR(7 downto 0);
-			RCA_cout: out STD_LOGIC
+			RCA_a:   in  STD_LOGIC_VECTOR(7 downto 0);
+			RCA_b:   in  STD_LOGIC_VECTOR(7 downto 0);
+			RCA_cin: in  STD_LOGIC;
+			RCA_sum: out STD_LOGIC_VECTOR(7 downto 0);
+			RCA_cout:out STD_LOGIC
 		);
 	end component;
 	

@@ -33,14 +33,14 @@ architecture structural of E_bytemux4 is
 		port map (l_topMuxOut, l_botMuxOut, bytemux4_sel(1), bytemux4_out);
 			
 		-- i0──╔═══╗
-		--	   ║MUX╟───╮
+		--     ║MUX╟───╮
 		-- i1──╚═╤═╝   ╰─╔═══╗
 		--       ╰───╮   ║MUX╟───out
 		-- i2──╔═══╗ │ ╭─╚═╤═╝
-		--	   ║MUX╟─┼─╯   │
+		--     ║MUX╟─┼─╯   │
 		-- i3──╚═╤═╝ │     │
 		--       │   │     │
-		-- sel0──┴───╯     │ 
+		-- sel0──┴───╯     │
 		-- sel1────────────╯
 			
 end structural;
