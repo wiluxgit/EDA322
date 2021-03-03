@@ -23,13 +23,14 @@ architecture Structure of E_rca is
   	    		     );
 	end component;
 
+SIGNAL carry : STD_LOGIC_VECTOR(0 downto 6);
 
 begin
-	E_fa0: E_fulladder PORT MAP(RCA_a(0), RCA_b(0), RCA_cin, s(0), cout(0));
+	E_fa0: E_fulladder PORT MAP(RCA_a(0), RCA_b(0), RCA_cin, RCA_sum(0), carry(0));
 	G1: for i in 1 to 6 generate
 		fulladders: E_fulladder PORT MAP (
-					RCA_a(i), RCA_b(i), cin(i), s(i), cout(i));
+					RCA_a(i), RCA_b(i), carry(i-1), RCA_sum(i), carry(i));
 	end generate;
-	E_fa7: E_fulladder PORT MAP(RCA_a(7), RCA_b(7), cin(7), s(7), RCA_cout);
+	E_fa7: E_fulladder PORT MAP(RCA_a(7), RCA_b(7), carry(6), RCA_sum(7), RCA_cout);
 
 end Structure;
