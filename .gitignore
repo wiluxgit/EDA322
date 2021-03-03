@@ -1,0 +1,10 @@
+vivado/*
+work/*
+**/*.tv
+*.wlf
+*.mti
+*.mpf
+*.xpr
+*.qdb
+*.qpq
+*.qtl
