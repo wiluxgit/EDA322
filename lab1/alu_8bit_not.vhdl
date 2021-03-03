@@ -19,20 +19,10 @@ architecture structural of E_8bit_not is
 	end component;
 	
 	begin
-		U0: entity work.E_not(structural)
-			port map (inp(0), out_8bit_not(0));
-		U1: entity work.E_not(structural)
-			port map (inp(1), out_8bit_not(1));
-		U2: entity work.E_not(structural)
-			port map (inp(2), out_8bit_not(2));
-		U3: entity work.E_not(structural)
-			port map (inp(3), out_8bit_not(3));
-		U4: entity work.E_not(structural)
-			port map (inp(4), out_8bit_not(4));
-		U5: entity work.E_not(structural)
-			port map (inp(5), out_8bit_not(5));
-		U6: entity work.E_not(structural)
-			port map (inp(6), out_8bit_not(6));
-		U7: entity work.E_not(structural)
-			port map (inp(7), out_8bit_not(7));
+		bitwise: 
+		for i in 0 to 7 generate
+			gen:
+			entity work.E_not(structural)
+			port map (inp(i), out_8bit_not(i));
+		end generate;
 end structural;
