@@ -22,6 +22,7 @@ architecture structural of E_alu is
 	signal l_inverted_ALU_inB: STD_LOGIC_VECTOR(7 downto 0);
 	signal l_adder_inB: STD_LOGIC_VECTOR(7 downto 0);
 	signal l_subtractMode: STD_LOGIC;
+	signal l_isOutNotZero: STD_LOGIC;
 	
 	component E_rca
 		port (
@@ -142,8 +143,9 @@ architecture structural of E_alu is
 		entity work.E_or_fold(structural)
 		port map(
 			or_fold_inp => l_muxOut,
-			or_fold_out => ALU_isOutZero
+			or_fold_out => l_isOutNotZero
 		);
 		
+		ALU_isOutZero <= NOT l_isOutNotZero
 		ALU_out <= l_muxOut;
 end structural;
