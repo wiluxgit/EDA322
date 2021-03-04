@@ -5,7 +5,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity E_or_fold is
 	port(
 		or_fold_inp: in STD_LOGIC_VECTOR(7 downto 0);
-		or_fold_out: out STD_LOGIC;
+		or_fold_out: out STD_LOGIC
 	);
 end E_or_fold;
 

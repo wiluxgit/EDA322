@@ -58,6 +58,13 @@ architecture structural of E_alu is
 		);
 	end component;
 	
+	component E_or_fold is
+		port(
+			or_fold_inp: in STD_LOGIC_VECTOR(7 downto 0);
+			or_fold_out: out STD_LOGIC
+		);
+	end component;
+	
 	component E_bytemux4 is
 		port(
 			bytemux4_i0, bytemux4_i1, bytemux4_i2, bytemux4_i3: in STD_LOGIC;
@@ -146,6 +153,6 @@ architecture structural of E_alu is
 			or_fold_out => l_isOutNotZero
 		);
 		
-		ALU_isOutZero <= NOT l_isOutNotZero
+		ALU_isOutZero <= NOT l_isOutNotZero;
 		ALU_out <= l_muxOut;
 end structural;
