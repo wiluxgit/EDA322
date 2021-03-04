@@ -1144,36 +1144,36 @@ z2
 cModel Technology
 Z0 dE:/BACKUP/wilux/git/EDA322
 T_opt
-!s110 1614798781
-VC:0VnC>V7LbNf4:dT`hoa3
-04 10 10 work e_bytemux4 structural 1
-=1-480fcf331fbd-603fdfbd-17f-35e8
+!s110 1614862635
+V8=88>g81f;n^CWf8@;NSE1
+04 6 10 work alu_tb behavioral 1
+=1-480fcf331fbd-6040d92a-357-2c08
 Z1 o-quiet -auto_acc_if_foreign -work work +acc
 Z2 tCvgOpt 0
 n@_opt
 Z3 OL;O;10.5;63
 R0
 T_opt1
-!s110 1614799193
-Vmz2N8dU?Il<[H7fb4o`BR0
-04 5 10 work e_rca structural 1
-=1-480fcf331fbd-603fe159-217-1e3c
+!s110 1614862893
+V299S[ZOJUo:N;1SA<X^YH3
+04 13 10 work e_bitwise_and structural 1
+=1-480fcf331fbd-6040da2d-295-498
 R1
 R2
 n@_opt1
 R3
 T_opt2
-!s110 1614798273
-Vaz8L;IoJ8l1:naJP9InEH3
-04 13 10 work e_bitwise_not structural 1
-=1-480fcf331fbd-603fddc1-253-36f8
+!s110 1614861783
+VP:5HE_@0FcVJ;6CF=7=H<3
+04 5 10 work e_alu structural 1
+=1-480fcf331fbd-6040d5d7-102-1938
 R1
 R2
 n@_opt2
 R3
 R0
 Ealu_tb
-Z4 w1614677239
+Z4 w1614862595
 Z5 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z6 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z7 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
@@ -1188,15 +1188,16 @@ VJ7Rc?KJUe[TTahlDP3MlK2
 !s100 S<kGfU:Cj?bX[YELJ8cl90
 Z13 OL;C;10.5;63
 32
-Z14 !s110 1614799186
+Z14 !s110 1614862624
 !i10b 1
-Z15 !s108 1614799186.000000
+Z15 !s108 1614862624.000000
 Z16 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/alu_testbench.vhd|
 Z17 !s107 E:/BACKUP/wilux/git/EDA322/lab1/alu_testbench.vhd|
 !i113 0
 Z18 o-work work -2002 -explicit
 Z19 tExplicit 1 CvgOpt 0
 Abehavioral
+Z20 DEx4 work 8 alu_wrca 0 22 XG;kjNOZfC<[45^NbknA=2
 R5
 R6
 R7
@@ -1205,8 +1206,8 @@ R9
 DEx4 work 6 alu_tb 0 22 J7Rc?KJUe[TTahlDP3MlK2
 l102
 L11
-Vjk]Z>eN=7aN43eAHhCz[61
-!s100 nbBz8d7QEjZ4NB6g3TNPG1
+Ve@@mzJ`8nBbTmbOz[@;B92
+!s100 S0T9_43^;[1TX>j2KM3692
 R13
 32
 R14
@@ -1217,193 +1218,242 @@ R17
 !i113 0
 R18
 R19
-Ee_alu
-Z20 w1614795393
+Ealu_wrca
+Z21 w1614862518
 R8
 R9
 R10
-Z21 8E:/BACKUP/wilux/git/EDA322/lab1/alu.vhdl
-Z22 FE:/BACKUP/wilux/git/EDA322/lab1/alu.vhdl
+Z22 8E:/BACKUP/wilux/git/EDA322/lab1/alu.vhdl
+Z23 FE:/BACKUP/wilux/git/EDA322/lab1/alu.vhdl
 l0
 L4
-VIc9[fPM89@E=LV:3VnD1O2
-!s100 _lNkV0dGg]K1O6<IjO]@b0
+VXG;kjNOZfC<[45^NbknA=2
+!s100 ]2`;6UNkPK?IBIEi[5Th60
 R13
 32
-Z23 !s110 1614799187
+Z24 !s110 1614862571
 !i10b 1
-Z24 !s108 1614799187.000000
-Z25 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/alu.vhdl|
-Z26 !s107 E:/BACKUP/wilux/git/EDA322/lab1/alu.vhdl|
+Z25 !s108 1614862571.000000
+Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/alu.vhdl|
+Z27 !s107 E:/BACKUP/wilux/git/EDA322/lab1/alu.vhdl|
 !i113 0
 R18
 R19
 Astructural
-Z27 DEx4 work 10 e_bytemux4 0 22 CYBm0]17iLoLYEZ@0>khg3
-Z28 DEx4 work 10 e_cmp_8bit 0 22 >YlCgfJKVX=9]KkL@kMIO0
-Z29 DEx4 work 13 e_bitwise_not 0 22 [hhW@zkMBEaAIKB9hI;gT0
+Z28 DEx4 work 9 e_or_fold 0 22 ^8ChYCQJKT8lBXU_U^[221
+Z29 DEx4 work 10 e_bytemux4 0 22 CYBm0]17iLoLYEZ@0>khg3
+Z30 DEx4 work 10 e_cmp_8bit 0 22 >YlCgfJKVX=9]KkL@kMIO0
+Z31 DEx4 work 13 e_bitwise_and 0 22 eVGef^KImB8MC6jomQoi<3
+Z32 DEx4 work 5 e_rca 0 22 Xc^mKKfXG0BngLePPiJbS2
+Z33 DEx4 work 10 e_bytemux2 0 22 ZXDV]_BcTf=6@[gLFDi:L3
 R7
-Z30 DEx4 work 13 e_bitwise_and 0 22 eVGef^KImB8MC6jomQoi<3
-Z31 DEx4 work 5 e_rca 0 22 Xc^mKKfXG0BngLePPiJbS2
+Z34 DEx4 work 13 e_bitwise_not 0 22 [hhW@zkMBEaAIKB9hI;gT0
 R8
 R9
-DEx4 work 5 e_alu 0 22 Ic9[fPM89@E=LV:3VnD1O2
-l65
+R20
+l76
 L17
-VgC20hh9WEIfm3V30INM9d0
-!s100 n2[@1elCQ=2Re07InOVO>2
+ViL^WOZKZ]jWU=:5bCPTkA3
+!s100 j4aam?i9FHO^L5z4mLIji3
 R13
 32
-R23
-!i10b 1
 R24
+!i10b 1
 R25
 R26
+R27
+!i113 0
+R18
+R19
+Ee_alu
+Z35 w1614862198
+R8
+R9
+R10
+R22
+R23
+l0
+L4
+VQg5K<5c]<92Ke3WoBLUV33
+!s100 eG5KZl693:TiO_fVMhagh2
+R13
+32
+Z36 !s110 1614862202
+!i10b 1
+Z37 !s108 1614862202.000000
+R26
+R27
+!i113 0
+R18
+R19
+Astructural
+R28
+R29
+R30
+R31
+R32
+R33
+R7
+R34
+R8
+R9
+DEx4 work 5 e_alu 0 22 Qg5K<5c]<92Ke3WoBLUV33
+l76
+L17
+V3Wh[OFX^67Ne1H:V<L13n3
+!s100 kQiB<[U;L9C2mac<g78BO1
+R13
+32
+R36
+!i10b 1
+R37
+R26
+R27
 !i113 0
 R18
 R19
 Ee_and
-Z32 w1614774832
+Z38 w1614861100
 R8
 R9
 R10
-Z33 8E:/BACKUP/wilux/git/EDA322/lab1/basic_gates.vhdl
-Z34 FE:/BACKUP/wilux/git/EDA322/lab1/basic_gates.vhdl
+Z39 8E:/BACKUP/wilux/git/EDA322/lab1/basic_gates.vhdl
+Z40 FE:/BACKUP/wilux/git/EDA322/lab1/basic_gates.vhdl
 l0
 L20
 V5D1jd>d0lM3LL;2VjJ^3[3
 !s100 7^WzM0RCH;UAf_iT3e^R:3
 R13
 32
-R14
+Z41 !s110 1614862570
 !i10b 1
-R15
-Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/basic_gates.vhdl|
-Z36 !s107 E:/BACKUP/wilux/git/EDA322/lab1/basic_gates.vhdl|
+Z42 !s108 1614862570.000000
+Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/basic_gates.vhdl|
+Z44 !s107 E:/BACKUP/wilux/git/EDA322/lab1/basic_gates.vhdl|
 !i113 0
 R18
 R19
 Astructural
 R8
 R9
-Z37 DEx4 work 5 e_and 0 22 5D1jd>d0lM3LL;2VjJ^3[3
+Z45 DEx4 work 5 e_and 0 22 5D1jd>d0lM3LL;2VjJ^3[3
 l29
 L28
-V[P]J9m`53=zhENFB8gCRB0
-!s100 7z`0<NJZk`06UM]<8ljhg0
+V_cB`:GNV9z<kV28;[hoL93
+!s100 GKVZC;5dYaQ1^AlPkgALE1
 R13
 32
-R14
+R41
 !i10b 1
-R15
-R35
-R36
+R42
+R43
+R44
 !i113 0
 R18
 R19
 Ee_bitwise_and
-Z38 w1614781210
+Z46 w1614781210
 R7
 R8
 R9
 R10
-Z39 8E:/BACKUP/wilux/git/EDA322/lab1/bitwise_and.vhdl
-Z40 FE:/BACKUP/wilux/git/EDA322/lab1/bitwise_and.vhdl
+Z47 8E:/BACKUP/wilux/git/EDA322/lab1/bitwise_and.vhdl
+Z48 FE:/BACKUP/wilux/git/EDA322/lab1/bitwise_and.vhdl
 l0
 L5
 VeVGef^KImB8MC6jomQoi<3
 !s100 4E;Ho_>BM2oD<Q^Wg6_DG2
 R13
 32
-R23
-!i10b 1
 R24
-Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/bitwise_and.vhdl|
-Z42 !s107 E:/BACKUP/wilux/git/EDA322/lab1/bitwise_and.vhdl|
+!i10b 1
+R25
+Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/bitwise_and.vhdl|
+Z50 !s107 E:/BACKUP/wilux/git/EDA322/lab1/bitwise_and.vhdl|
 !i113 0
 R18
 R19
 Astructural
-R37
+R45
 R7
 R8
 R9
-R30
+R31
 l22
 L12
 VEhaoK?70]J:L:5fS7;BAG2
 !s100 ^f:@3m9@><C_3NkPzWOQ;3
 R13
 32
-R23
-!i10b 1
 R24
-R41
-R42
+!i10b 1
+R25
+R49
+R50
 !i113 0
 R18
 R19
 Ee_bitwise_not
-Z43 w1614781054
+Z51 w1614781054
 R7
 R8
 R9
 R10
-Z44 8E:/BACKUP/wilux/git/EDA322/lab1/bitwise_not.vhdl
-Z45 FE:/BACKUP/wilux/git/EDA322/lab1/bitwise_not.vhdl
+Z52 8E:/BACKUP/wilux/git/EDA322/lab1/bitwise_not.vhdl
+Z53 FE:/BACKUP/wilux/git/EDA322/lab1/bitwise_not.vhdl
 l0
 L5
 V[hhW@zkMBEaAIKB9hI;gT0
 !s100 h91:K6DL5jBUz7R3iL5GR2
 R13
 32
-R23
-!i10b 1
 R24
-Z46 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/bitwise_not.vhdl|
-Z47 !s107 E:/BACKUP/wilux/git/EDA322/lab1/bitwise_not.vhdl|
+!i10b 1
+R25
+Z54 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/bitwise_not.vhdl|
+Z55 !s107 E:/BACKUP/wilux/git/EDA322/lab1/bitwise_not.vhdl|
 !i113 0
 R18
 R19
 Astructural
-Z48 DEx4 work 5 e_not 0 22 7F>AlLd2OkC;K<dWUX0^X3
+Z56 DEx4 work 5 e_not 0 22 7F>AlLd2OkC;K<dWUX0^X3
 R7
 R8
 R9
-R29
+R34
 l21
 L12
 VKZ2YRBoWfOB=laffzbO]73
 !s100 JlIlW8mh4Um_ej_C`lHi:1
 R13
 32
-R23
-!i10b 1
 R24
-R46
-R47
+!i10b 1
+R25
+R54
+R55
 !i113 0
 R18
 R19
 Ee_bytemux2
-Z49 w1614786800
+Z57 w1614786800
 R7
 R8
 R9
 R10
-Z50 8E:/BACKUP/wilux/git/EDA322/lab1/bytemux2.vhdl
-Z51 FE:/BACKUP/wilux/git/EDA322/lab1/bytemux2.vhdl
+Z58 8E:/BACKUP/wilux/git/EDA322/lab1/bytemux2.vhdl
+Z59 FE:/BACKUP/wilux/git/EDA322/lab1/bytemux2.vhdl
 l0
 L5
 VZXDV]_BcTf=6@[gLFDi:L3
 !s100 h9MS7?D:Ak2KgM9cMM77z3
 R13
 32
-R23
-!i10b 1
 R24
-Z52 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/bytemux2.vhdl|
-Z53 !s107 E:/BACKUP/wilux/git/EDA322/lab1/bytemux2.vhdl|
+!i10b 1
+R25
+Z60 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/bytemux2.vhdl|
+Z61 !s107 E:/BACKUP/wilux/git/EDA322/lab1/bytemux2.vhdl|
 !i113 0
 R18
 R19
@@ -1411,82 +1461,82 @@ Astructural
 R7
 R8
 R9
-Z54 DEx4 work 10 e_bytemux2 0 22 ZXDV]_BcTf=6@[gLFDi:L3
+R33
 l14
 L13
 VE>W;A@amUHVPUdUO`3j^h0
 !s100 jJ2G?Qgi2m<jg3R_>JS[@2
 R13
 32
-R23
-!i10b 1
 R24
-R52
-R53
+!i10b 1
+R25
+R60
+R61
 !i113 0
 R18
 R19
 Ee_bytemux4
-Z55 w1614794088
+Z62 w1614861446
 R7
 R8
 R9
 R10
-Z56 8E:/BACKUP/wilux/git/EDA322/lab1/bytemux4.vhdl
-Z57 FE:/BACKUP/wilux/git/EDA322/lab1/bytemux4.vhdl
+Z63 8E:/BACKUP/wilux/git/EDA322/lab1/bytemux4.vhdl
+Z64 FE:/BACKUP/wilux/git/EDA322/lab1/bytemux4.vhdl
 l0
 L5
 VCYBm0]17iLoLYEZ@0>khg3
 !s100 URYK3Ldi4B0Uboh7Z[3HC3
 R13
 32
-R23
+Z65 !s110 1614862572
 !i10b 1
-R24
-Z58 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/bytemux4.vhdl|
-Z59 !s107 E:/BACKUP/wilux/git/EDA322/lab1/bytemux4.vhdl|
+R25
+Z66 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/bytemux4.vhdl|
+Z67 !s107 E:/BACKUP/wilux/git/EDA322/lab1/bytemux4.vhdl|
 !i113 0
 R18
 R19
 Astructural
-R54
+R33
 R7
 R8
 R9
-R27
-l22
+R29
+l24
 L13
-VCeIU2d;2C7@FXSncEUPVo2
-!s100 A5PWf?=5K2am1Slb2KdW92
+Vz9_cY@S0DK[iIc0`4M7[E1
+!s100 l7mJKaEeMzoVVGCWfDe:m2
 R13
 32
-R23
+R65
 !i10b 1
-R24
-R58
-R59
+R25
+R66
+R67
 !i113 0
 R18
 R19
 Ee_cmp_8bit
-Z60 w1614793565
+Z68 w1614793565
 R7
 R8
 R9
 R10
-Z61 8E:/BACKUP/wilux/git/EDA322/lab1/cmp_8bit.vhdl
-Z62 FE:/BACKUP/wilux/git/EDA322/lab1/cmp_8bit.vhdl
+Z69 8E:/BACKUP/wilux/git/EDA322/lab1/cmp_8bit.vhdl
+Z70 FE:/BACKUP/wilux/git/EDA322/lab1/cmp_8bit.vhdl
 l0
 L5
 V>YlCgfJKVX=9]KkL@kMIO0
 !s100 1l9<WgZC9>4nZF4`>Mb2T0
 R13
 32
-R23
-!i10b 1
 R24
-Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/cmp_8bit.vhdl|
-Z64 !s107 E:/BACKUP/wilux/git/EDA322/lab1/cmp_8bit.vhdl|
+!i10b 1
+R42
+Z71 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/cmp_8bit.vhdl|
+Z72 !s107 E:/BACKUP/wilux/git/EDA322/lab1/cmp_8bit.vhdl|
 !i113 0
 R18
 R19
@@ -1494,39 +1544,39 @@ Astructural
 R7
 R8
 R9
-R28
+R30
 l14
 L12
 Vn_Toc[13>]gBM;_zC6dDD2
 !s100 I;k^ChKMDQ;X0S7Wda61J0
 R13
 32
-R23
-!i10b 1
 R24
-R63
-R64
+!i10b 1
+R42
+R71
+R72
 !i113 0
 R18
 R19
 Ee_fulladd
-Z65 w1614777225
+Z73 w1614777225
 R8
 R9
 R10
-Z66 8E:/BACKUP/wilux/git/EDA322/lab1/FA.vhdl
-Z67 FE:/BACKUP/wilux/git/EDA322/lab1/FA.vhdl
+Z74 8E:/BACKUP/wilux/git/EDA322/lab1/FA.vhdl
+Z75 FE:/BACKUP/wilux/git/EDA322/lab1/FA.vhdl
 l0
 L5
 V82C9YTjRXdYm:llefDfgT0
 !s100 ?XOGI?cVShc?if3G0?PB31
 R13
 32
-Z68 !s110 1614795668
+Z76 !s110 1614795668
 !i10b 1
-Z69 !s108 1614795668.000000
-Z70 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/FA.vhdl|
-Z71 !s107 E:/BACKUP/wilux/git/EDA322/lab1/FA.vhdl|
+Z77 !s108 1614795668.000000
+Z78 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/FA.vhdl|
+Z79 !s107 E:/BACKUP/wilux/git/EDA322/lab1/FA.vhdl|
 !i113 0
 R18
 R19
@@ -1540,57 +1590,57 @@ VR<zmzK?S>GK1@VW@g_?>P2
 !s100 SzjlDV<`K`8C[ERP^L_1J0
 R13
 32
-R68
+R76
 !i10b 1
-R69
-R70
-R71
+R77
+R78
+R79
 !i113 0
 R18
 R19
 Ee_fulladder
-Z72 w1614799172
+Z80 w1614799172
 R8
 R9
 R10
-R66
-R67
+R74
+R75
 l0
 L5
 Vl?85Lh=@dCZX`;=?`P_DC3
 !s100 0n21Y`gLmE;];g?i?VXYV0
 R13
 32
-R14
+R41
 !i10b 1
-R15
-R70
-R71
+R42
+R78
+R79
 !i113 0
 R18
 R19
 Astructural
 R8
 R9
-Z73 DEx4 work 11 e_fulladder 0 22 l?85Lh=@dCZX`;=?`P_DC3
+Z81 DEx4 work 11 e_fulladder 0 22 l?85Lh=@dCZX`;=?`P_DC3
 l15
 L14
 VhLmNYd;8JGShMF^EnPZJ?3
 !s100 `J@TaGDIK^ifa_ldd2ZAC0
 R13
 32
-R14
+R41
 !i10b 1
-R15
-R70
-R71
+R42
+R78
+R79
 !i113 0
 R18
 R19
 Astructure
 R8
 R9
-R73
+R81
 l15
 L14
 VN``4@dAPWUS;gUgOYdWGT1
@@ -1600,8 +1650,8 @@ R13
 !s110 1614799138
 !i10b 1
 !s108 1614799137.000000
-R70
-R71
+R78
+R79
 !i113 0
 R18
 R19
@@ -1609,7 +1659,7 @@ w1614798728
 Adataflow
 R8
 R9
-R73
+R81
 l15
 L14
 VT__=Km=3<;`hH4N:1R6_l2
@@ -1619,68 +1669,28 @@ R13
 !s110 1614798672
 !i10b 1
 !s108 1614798672.000000
-R70
-R71
+R78
+R79
 !i113 0
 R18
 R19
 w1614798659
 Ee_mux2
-Z74 w1614781690
+Z82 w1614781690
 R7
 R8
 R9
 R10
-Z75 8E:/BACKUP/wilux/git/EDA322/lab1/mux2.vhdl
-Z76 FE:/BACKUP/wilux/git/EDA322/lab1/mux2.vhdl
+Z83 8E:/BACKUP/wilux/git/EDA322/lab1/mux2.vhdl
+Z84 FE:/BACKUP/wilux/git/EDA322/lab1/mux2.vhdl
 l0
 L5
 V67?[a6OcY4L^3B^1`nohg3
 !s100 AHBDknSDCFof^N<7NRPiL0
 R13
 32
-Z77 !s110 1614799188
+R65
 !i10b 1
-Z78 !s108 1614799188.000000
-Z79 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/mux2.vhdl|
-Z80 !s107 E:/BACKUP/wilux/git/EDA322/lab1/mux2.vhdl|
-!i113 0
-R18
-R19
-Astructural
-R7
-R8
-R9
-Z81 DEx4 work 6 e_mux2 0 22 67?[a6OcY4L^3B^1`nohg3
-l14
-L13
-V7o8c1kNm_5^9>;=TnJXQ43
-!s100 A7UjB<ZI9Q>G96TgU7be<0
-R13
-32
-R77
-!i10b 1
-R78
-R79
-R80
-!i113 0
-R18
-R19
-Ee_mux4
-Z82 w1614781707
-R7
-R8
-R9
-R10
-Z83 8E:/BACKUP/wilux/git/EDA322/lab1/mux4.vhdl
-Z84 FE:/BACKUP/wilux/git/EDA322/lab1/mux4.vhdl
-l0
-L5
-VEcPOS=]ohCYbN`ZHc[DB21
-!s100 TSFb6D^_W9kQJYBd?NMbe1
-R13
-32
-R77
-!i10b 1
-R78
-Z85 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none
+Z85 !s108 1614862572.000000
+Z86 !s90 -reportprogress|300|-work|work|-2002|-explicit|-vopt|-stats=none|E:/BACKUP/wilux/git/EDA322/lab1/mux2.vhdl|
+Z87 !s107 E:/BACKUP/wilux/git/EDA322/

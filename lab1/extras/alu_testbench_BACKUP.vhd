@@ -105,7 +105,7 @@ AMem         <= loadOperand(string'("A_mod_FINAL.tv"));
 BMem         <= loadOperand(string'("B_mod_FINAL.tv"));
 OpMem        <= loadOpCode(string'("Op_mod_FINAL.tv"));
 
-test_inst: entity work.alu_wRCA(structural) port map (op_a, op_b, op_out, Carry, NotEq, Eq, isOutZero, opcode);
+test_inst: alu_wRCA port map (op_a, op_b, op_out, Carry, NotEq, Eq, isOutZero, opcode);
 
 with opcode select 
   exp_op_out <= op_a + op_b when "00",

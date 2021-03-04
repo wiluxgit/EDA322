@@ -9,7 +9,7 @@ entity E_cmp_8bit is
 	);
 end E_cmp_8bit;
 
-architecture structural of E_cmp_8bit is
+architecture implem of E_cmp_8bit is
 	signal l_helper: STD_LOGIC;
 	begin
 		l_helper <= 
@@ -24,4 +24,4 @@ architecture structural of E_cmp_8bit is
 			
 		cmp_eq <= l_helper;
 		cmp_neq <= NOT l_helper;
-end structural;
+end implem;

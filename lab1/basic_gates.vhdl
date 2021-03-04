@@ -9,10 +9,10 @@ entity E_xor is
 	);
 end E_xor;
 
-architecture structural of E_xor is
+architecture implem of E_xor is
 	begin
 		xor_out <= xor_i0 XOR xor_i1;
-end structural;
+end implem;
 
 --AND
 library IEEE;
@@ -25,10 +25,10 @@ entity E_and is
 	);
 end E_and;
 
-architecture structural of E_and is
+architecture implem of E_and is
 	begin
 		and_out <= and_i0 AND and_i1;
-end structural;
+end implem;
 
 --NOT
 library IEEE;
@@ -40,7 +40,7 @@ entity E_not is
 	);
 end E_not;
 
-architecture structural of E_not is
+architecture implem of E_not is
 	begin
 		not_out <= NOT not_i;
-end structural;
+end implem;

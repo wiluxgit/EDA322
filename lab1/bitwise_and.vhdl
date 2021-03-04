@@ -9,7 +9,7 @@ entity E_bitwise_and is
 	);
 end E_bitwise_and;
 
-architecture structural of E_bitwise_and is
+architecture implem of E_bitwise_and is
 	
 	component E_and
 		port(
@@ -23,11 +23,11 @@ architecture structural of E_bitwise_and is
 		bitwise: 
 		for i in 0 to 7 generate
 			gen:
-			entity work.E_and(structural)
+			entity work.E_and(implem)
 			port map(
 				bitwise_and_inpA(i), 
 				bitwise_and_inpB(i), 
 				bitwise_and_out(i)
 			);
 		end generate;
-end structural;
+end implem;

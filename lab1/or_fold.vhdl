@@ -9,7 +9,7 @@ entity E_or_fold is
 	);
 end E_or_fold;
 
-architecture structural of E_or_fold is
+architecture implem of E_or_fold is
 	begin
 		or_fold_out <= 
 			or_fold_inp(0) OR
@@ -20,4 +20,4 @@ architecture structural of E_or_fold is
 			or_fold_inp(5) OR
 			or_fold_inp(6) OR
 			or_fold_inp(7);
-end structural;
+end implem;

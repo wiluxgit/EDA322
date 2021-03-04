@@ -10,10 +10,10 @@ entity E_bytemux2 is
 	);
 end E_bytemux2;
 
-architecture structural of E_bytemux2 is
+architecture implem of E_bytemux2 is
 	begin
 		with bytemux2_sel select
 			bytemux2_out <=
 				bytemux2_i0 when '0',
 				bytemux2_i1 when others;
-end structural;
+end implem;

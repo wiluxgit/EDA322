@@ -11,8 +11,8 @@ entity E_fulladder is
   	     );
 end E_fulladder;
 
-architecture structural of E_fulladder is
+architecture implem of E_fulladder is
 begin
 	s <= a XOR b XOR cin;
 	cout <= (a AND b) OR (cin AND (a XOR b));
-end structural;
+end implem;

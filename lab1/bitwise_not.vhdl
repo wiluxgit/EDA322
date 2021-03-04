@@ -9,7 +9,7 @@ entity E_bitwise_not is
 	);
 end E_bitwise_not;
 
-architecture structural of E_bitwise_not is
+architecture implem of E_bitwise_not is
 	
 	component E_not
 		port(
@@ -22,7 +22,7 @@ architecture structural of E_bitwise_not is
 		bitwise: 
 		for i in 0 to 7 generate
 			gen:
-			entity work.E_not(structural)
+			entity work.E_not(implem)
 			port map (bitwise_not_inp(i), bitwise_not_out(i));
 		end generate;
-end structural;
+end implem;

@@ -10,11 +10,11 @@ entity E_mux2 is
 	);
 end E_mux2;
 
-architecture structural of E_mux2 is
+architecture implem of E_mux2 is
 	begin
 		with mux2_sel select
 			mux2_out <=
 				mux2_i0 when '0',
 				mux2_i1 when '1',
 				'Z' when others;
-end structural;
+end implem;
