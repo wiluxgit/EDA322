@@ -14,16 +14,7 @@ entity E_alu is
 	);
 end E_alu;
 
-architecture structural of E_alu is
-	signal l_andOut: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_notOut: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_sumOut: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_muxOut: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_inverted_ALU_inB: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_adder_inB: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_subtractMode: STD_LOGIC;
-	signal l_isOutNotZero: STD_LOGIC;
-	
+architecture structural of E_alu is	
 	component E_rca
 		port (
 			RCA_a:   in  STD_LOGIC_VECTOR(7 downto 0);
@@ -72,6 +63,15 @@ architecture structural of E_alu is
 			bytemux4_out: out STD_LOGIC
 		);
 	end component;
+	
+	signal l_andOut: STD_LOGIC_VECTOR(7 downto 0);
+	signal l_notOut: STD_LOGIC_VECTOR(7 downto 0);
+	signal l_sumOut: STD_LOGIC_VECTOR(7 downto 0);
+	signal l_muxOut: STD_LOGIC_VECTOR(7 downto 0);
+	signal l_inverted_ALU_inB: STD_LOGIC_VECTOR(7 downto 0);
+	signal l_adder_inB: STD_LOGIC_VECTOR(7 downto 0);
+	signal l_subtractMode: STD_LOGIC;
+	signal l_isOutNotZero: STD_LOGIC;
 	
 	begin
 		-- ========== ADDER LOGIC ========= --

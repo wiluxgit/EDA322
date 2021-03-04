@@ -18,7 +18,9 @@ architecture structural of E_bytemux4 is
 			bytemux2_out: out STD_LOGIC_VECTOR(7 downto 0)
 		);
 	end component;
+	
 	signal l_topMuxOut, l_botMuxOut: STD_LOGIC_VECTOR(7 downto 0);
+	
 	begin
 		TOPMUX: 
 		entity work.E_bytemux2(structural)
