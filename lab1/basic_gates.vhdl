@@ -27,7 +27,7 @@ end E_and;
 
 architecture structural of E_and is
 	begin
-		and_out <= and_i1 XOR and_i1;
+		and_out <= and_i0 AND and_i1;
 end structural;
 
 --NOT
