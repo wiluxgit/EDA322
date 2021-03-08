@@ -1,0 +1,13 @@
+impure function init_memory_wfile(mif_file_name : in string) return MEMORY_ARRAY is
+    file mif_file : text open read_mode is mif_file_name;
+    variable mif_line : line;
+    variable temp_bv : bit_vector(DATA_WIDTH-1 downto 0);
+    variable temp_mem : MEMORY_ARRAY;
+begin
+    for i in MEMORY_ARRAY'range loop
+        readline(mif_file, mif_line);
+        read(mif_line, temp_bv);
+        temp_mem(i) := to_stdlogicvector(temp_bv);
+    end loop;
+    return temp_mem;
+end function;
