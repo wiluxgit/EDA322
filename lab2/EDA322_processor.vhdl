@@ -183,7 +183,7 @@ architecture structural of EDA322_processor is
 	signal l_proc_acc2bus: STD_LOGIC;
 	signal l_proc_ext2bus: STD_LOGIC;
 	signal l_proc_dispLd: STD_LOGIC;
-	signal l_proc_aluMd: STD_LOGIC;
+	signal l_proc_aluMd: STD_LOGIC_VECTOR(1 downto 0);
 	
 	begin 
 		
@@ -242,7 +242,7 @@ architecture structural of EDA322_processor is
 			data_width => 12,
 			addr_width => 8,
 			init_file => "inst_mem.mif"
-		);
+		)
 		port map (
 			addr => l_pc,
 			dIn	=> "000000000000",
@@ -273,13 +273,13 @@ architecture structural of EDA322_processor is
 		);
 		
 		-- Data Memory With Logic--
-		INSTR_MEM:
+		DATA_MEM:
 		entity work.mem_array(behavioral)
 		generic map(
-			data_width => 8;
-			addr_width => 8;
+			data_width => 8,
+			addr_width => 8,
 			init_file => "inst_mem.mif"
-		);
+		)
 		port map (
 			addr => l_MemData_Addr,
 			dIn	=> l_dataIn,
@@ -394,6 +394,5 @@ architecture structural of EDA322_processor is
 			dispLd => l_proc_dispLd,
 			aluMd => l_proc_aluMd
 		);
-	end component;
 		
 end structural;
