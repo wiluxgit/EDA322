@@ -10,7 +10,7 @@ entity mem_array is
 		);
 	port (
 		addr	: in  STD_LOGIC_VECTOR(addr_width-1 downto 0);
-		datain	: in  STD_LOGIC_VECTOR(data_width-1 downto 0);
+		dIn	: in  STD_LOGIC_VECTOR(data_width-1 downto 0);
 		clk, we : in  STD_LOGIC;
 		output	: out STD_LOGIC_VECTOR(data_width-1 downto 0)
 		);
@@ -18,7 +18,7 @@ end mem_array;
 
 architecture behavioral of mem_array is
 
-Type MEMORY_ARRAY is array (0 to n-1) of STD_LOGIC_VECTOR(data_width-1 downto 0);
+Type MEMORY_ARRAY is array (0 to addr_width-1) of STD_LOGIC_VECTOR(data_width-1 downto 0);
 
 impure function init_memory_wfile(mif_file_name : in string) return MEMORY_ARRAY is
     file mif_file : text open read_mode is mif_file_name;
@@ -34,10 +34,17 @@ begin
     return temp_mem;
 end function;
 
-SIGNAL memory : MEMORY_ARRAY(addr_width-1);
+SIGNAL memory : integer;
 
 begin
-
-
-
+	process(clk, we)
+	begin
+		if we = '0' then
+			output <= memory(to_integer(unsigned(addr)))
+		elsif rising_edge(clk) then
+			if we = '1' then
+				memory(to_integer(unsigned(addr))) <= dIn
+			end if;
+		end if;
+	end process;
 end behavioral;

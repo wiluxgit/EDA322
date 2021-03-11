@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity E_register is
-	generic (n : INTEGER := 8);
+	generic (n : integer := 8);
 	port ( 	dIn			: in  STD_LOGIC_VECTOR(n-1 downto 0);
 		clk, aresetn, loadE 	: in  STD_LOGIC;
 		output 			: out STD_LOGIC_VECTOR(n-1 downto 0));
