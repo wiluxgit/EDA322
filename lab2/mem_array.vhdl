@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
+use ieee.numeric_std.all;
+use std.textio.all;
 
 entity mem_array is
 	generic (
@@ -34,7 +35,7 @@ begin
     return temp_mem;
 end function;
 
-SIGNAL memory : integer;
+SIGNAL memory : MEMORY_ARRAY := init_memory_wfile(init_file);
 
 begin
 	process(clk, we)
