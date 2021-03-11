@@ -19,7 +19,7 @@ end mem_array;
 
 architecture behavioral of mem_array is
 
-Type MEMORY_ARRAY is array (0 to 255) of STD_LOGIC_VECTOR(data_width-1 downto 0);
+Type MEMORY_ARRAY is array (0 to addr_width) of STD_LOGIC_VECTOR(data_width-1 downto 0);
 
 impure function init_memory_wfile(mif_file_name : in string) return MEMORY_ARRAY is
     file mif_file : text open read_mode is mif_file_name;
