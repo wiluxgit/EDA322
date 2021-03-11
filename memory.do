@@ -21,4 +21,7 @@ run 100ns
 force addr b"00000010"
 run 100ns
 
+force addr b"00001100"
+run 100ns
+
 # etc...
