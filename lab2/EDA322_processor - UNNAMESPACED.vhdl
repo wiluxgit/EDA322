@@ -27,26 +27,26 @@ architecture structural of EDA322_processor is
 	component procController is
 		port(
 			master_load_enable: in STD_LOGIC;
-			opcode: in  STD_LOGIC_VECTOR (3 downto 0);
-			neq: in STD_LOGIC;
-			eq: in STD_LOGIC; 
-			CLK: in STD_LOGIC;
-			ARESETN: in STD_LOGIC;
-			pcSel: out  STD_LOGIC;
-			pcLd: out  STD_LOGIC;
-			instrLd: out  STD_LOGIC;
-			addrMd: out  STD_LOGIC;
-			dmWr: out  STD_LOGIC;
-			dataLd: out  STD_LOGIC;
-			flagLd: out  STD_LOGIC;
-			accSel: out  STD_LOGIC;
-			accLd: out  STD_LOGIC;
-			im2bus: out  STD_LOGIC;
-			dmRd: out  STD_LOGIC;
-			acc2bus: out  STD_LOGIC;
-			ext2bus: out  STD_LOGIC;
+			opcode : in  STD_LOGIC_VECTOR (3 downto 0);
+			neq : in STD_LOGIC;
+			eq : in STD_LOGIC; 
+			CLK : in STD_LOGIC;
+			ARESETN : in STD_LOGIC;
+			pcSel : out  STD_LOGIC;
+			pcLd : out  STD_LOGIC;
+			instrLd : out  STD_LOGIC;
+			addrMd : out  STD_LOGIC;
+			dmWr : out  STD_LOGIC;
+			dataLd : out  STD_LOGIC;
+			flagLd : out  STD_LOGIC;
+			accSel : out  STD_LOGIC;
+			accLd : out  STD_LOGIC;
+			im2bus : out  STD_LOGIC;
+			dmRd : out  STD_LOGIC;
+			acc2bus : out  STD_LOGIC;
+			ext2bus : out  STD_LOGIC;
 			dispLd: out STD_LOGIC;
-			aluMd: out STD_LOGIC_VECTOR(1 downto 0)
+			aluMd : out STD_LOGIC_VECTOR(1 downto 0)
 		);
 	end component;
 	
@@ -100,11 +100,10 @@ architecture structural of EDA322_processor is
 			init_file:  string  := "inst_mem.mif"
 		);
 		port(
-			addr: in  STD_LOGIC_VECTOR(addr_width-1 downto 0);
-			dIn: in  STD_LOGIC_VECTOR(data_width-1 downto 0);
-			clk: in  STD_LOGIC;
-			we: in  STD_LOGIC;
-			output: out STD_LOGIC_VECTOR(data_width-1 downto 0)
+			addr	: in  STD_LOGIC_VECTOR(addr_width-1 downto 0);
+			dIn	: in  STD_LOGIC_VECTOR(data_width-1 downto 0);
+			clk, we : in  STD_LOGIC;
+			output	: out STD_LOGIC_VECTOR(data_width-1 downto 0)
 		);
 	end component;
 	
@@ -169,23 +168,10 @@ architecture structural of EDA322_processor is
 	-- signal l_D_flag2seg: STD_LOGIC_VECTOR(7 downto 0);
 	-- signal l_D_disp2seg: STD_LOGIC_VECTOR(7 downto 0);
 	
-	signal l_proc_pcSel: STD_LOGIC;
-	signal l_proc_pcLd: STD_LOGIC;
-	signal l_proc_instrLd: STD_LOGIC;
-	signal l_proc_addrMd: STD_LOGIC;
-	signal l_proc_dmWr: STD_LOGIC;
-	signal l_proc_dataLd: STD_LOGIC;
-	signal l_proc_flagLd: STD_LOGIC;
-	signal l_proc_accSel: STD_LOGIC;
-	signal l_proc_accLd: STD_LOGIC;
-	signal l_proc_im2bus: STD_LOGIC;
-	signal l_proc_dmRd: STD_LOGIC;
-	signal l_proc_acc2bus: STD_LOGIC;
-	signal l_proc_ext2bus: STD_LOGIC;
-	signal l_proc_dispLd: STD_LOGIC;
-	signal l_proc_aluMd: STD_LOGIC;
-	
 	begin 
+		PROC_CONTROLLER:
+		
+		entity work.procController(Behavioral);
 		
 		-- Internal Bus --
 		INTERNAL_BUS:
@@ -197,10 +183,10 @@ architecture structural of EDA322_processor is
 			PBUS_EXTDATA => externalIn,
 			PBUS_OUTPUT => l_Bus,
 			PBUS_ERR => l_Bus_errSig,
-			PBUS_instrSEL => l_proc_im2bus,
-			PBUS_dataSEL => l_proc_dmRd,
-			PBUS_accSEL => l_proc_acc2bus,
-			PBUS_extdataSEL => l_proc_ext2bus
+			PBUS_instrSEL => im2bus,
+			PBUS_dataSEL => dmRd,
+			PBUS_accSEL => acc2bus,
+			PBUS_extdataSEL => ext2bus
 		);
 		l_BusOut <= l_Bus;		
 		
@@ -212,7 +198,7 @@ architecture structural of EDA322_processor is
 			dIn => l_nxtpc,
 			clk => CLK,
 			aresetn => ARESETN,
-			loadE => l_proc_pcSel,
+			loadE => pcSel,
 			output => l_pc
 		);
 		
@@ -231,7 +217,7 @@ architecture structural of EDA322_processor is
 		port map(
 			bytemux2_i0 => l_PCIncrOut,
 			bytemux2_i1 => l_Bus,
-			bytemux2_sel => l_proc_pcSel,
+			bytemux2_sel => pcSel,
 			bytemux2_out => l_nxtpc
 		);
 		
@@ -239,8 +225,8 @@ architecture structural of EDA322_processor is
 		INSTR_MEM:
 		entity work.mem_array(behavioral)
 		generic map(
-			data_width => 12,
-			addr_width => 8,
+			data_width => 12;
+			addr_width => 8;
 			init_file => "inst_mem.mif"
 		);
 		port map (
@@ -259,7 +245,7 @@ architecture structural of EDA322_processor is
 			dIn => l_InstrMemOut,
 			clk => CLK,
 			aresetn => ARESETN,
-			loadE => l_proc_instrLd,
+			loadE => instrLd,
 			output => l_Instruction
 		);
 		
@@ -268,7 +254,7 @@ architecture structural of EDA322_processor is
 		port map(
 			bytemux2_i0 => l_addrFromInstruction,
 			bytemux2_i1 => l_MemDataOutReged,
-			bytemux2_sel => l_proc_addrMd,
+			bytemux2_sel => addrMd,
 			bytemux2_out => l_MemData_Addr
 		);
 		
@@ -284,7 +270,7 @@ architecture structural of EDA322_processor is
 			addr => l_MemData_Addr,
 			dIn	=> l_dataIn,
 			clk => CLK,
-			we => l_proc_dmWr,
+			we => dmWr,
 			output => l_MemDataOut
 		);
 		
@@ -295,7 +281,7 @@ architecture structural of EDA322_processor is
 			dIn => l_MemDataOut,
 			clk => CLK,
 			aresetn => ARESETN,
-			loadE => l_proc_dataLd,
+			loadE => dataLd,
 			output => l_MemDataOutReged
 		);
 		
@@ -310,7 +296,7 @@ architecture structural of EDA322_processor is
 			NotEq => l_AluFlag_NEQ,
 			Eq => l_AluFlag_EQ,
 			isOutZero => l_AluFlag_isZero,
-			operation => l_proc_aluMd
+			operation => aluMd
 		);
 		
 		ALU_OUT_Mux:
@@ -318,7 +304,7 @@ architecture structural of EDA322_processor is
 		port map(
 			bytemux2_i0 => l_OutFromAlu,
 			bytemux2_i1 => l_BusOut,
-			bytemux2_sel => l_proc_accSel,
+			bytemux2_sel => accSel,
 			bytemux2_out => l_InToAcc
 		);
 		
@@ -329,7 +315,7 @@ architecture structural of EDA322_processor is
 			dIn => l_InToAcc,
 			clk => CLK,
 			aresetn => ARESETN,
-			loadE => l_proc_accLd,
+			loadE => accLd,
 			output => l_OutFromAcc
 		);
 		
@@ -340,10 +326,12 @@ architecture structural of EDA322_processor is
 			dIn => l_FlagInp,
 			clk => CLK,
 			aresetn => ARESETN,
-			loadE => l_proc_flagLd,
+			loadE => accLd,
 			output => l_Regged_Flag
 		);
-		
+		neq <= l_Regged_AluFlag_NEQ 
+		eq <= l_Regged_AluFlag_EQ 
+	
 		REG_DISPLAY:
 		entity work.E_register(behavioral)
 		generic map (n => 8)
@@ -351,7 +339,7 @@ architecture structural of EDA322_processor is
 			dIn => l_OutFromAcc,
 			clk => CLK,
 			aresetn => ARESETN,
-			loadE => l_proc_dispLd,
+			loadE => dispLd,
 			output => disp2seg
 		);
 		
@@ -366,34 +354,5 @@ architecture structural of EDA322_processor is
 		pc2seg <= l_pc;
 		
 		-- disp2seg already done @ REG_DISPLAY
-		
-		-- CONTROLLER
-		
-		PROC_CONTROLLER:		
-		entity work.procController(behavioral)
-		port map(
-			master_load_enable => master_load_enable,
-			opcode => l_opFromInstruction,
-			neq => l_Regged_AluFlag_NEQ,
-			eq => l_Regged_AluFlag_EQ,
-			CLK => CLK,
-			ARESETN => ARESETN,
-			pcSel => l_proc_pcSel,
-			pcLd => l_proc_pcLd,
-			instrLd => l_proc_instrLd,
-			addrMd => l_proc_addrMd,
-			dmWr => l_proc_dmWr,
-			dataLd => l_proc_dataLd,
-			flagLd => l_proc_flagLd,
-			accSel => l_proc_accSel,
-			accLd => l_proc_accLd,
-			im2bus => l_proc_im2bus,
-			dmRd => l_proc_dmRd,
-			acc2bus => l_proc_acc2bus,
-			ext2bus => l_proc_ext2bus,
-			dispLd => l_proc_dispLd,
-			aluMd => l_proc_aluMd
-		);
-	end component;
 		
 end structural;
