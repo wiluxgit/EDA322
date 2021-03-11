@@ -7,5 +7,6 @@ work/*
 *.xpr
 *.qdb
 *.qpq
+*.qpg
 *.qtl
 *.qtg
