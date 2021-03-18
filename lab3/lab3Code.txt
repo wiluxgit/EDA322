@@ -1,0 +1,31 @@
+// Test program for lab 3
+// Written by Angelos Arelakis
+// Test program was written in ChAcc assembly
+// The "inst_mem.mif" contains the assembly code (below) in machine code
+// The "data_mem.mif" contains the data memory content when the program starts execution
+// Values provided below are in decimal
+
+0. NOOP
+1. AD ACC, DM[1]		// ACC = 0 + 7
+2. SU ACC, DM[2]		// ACC = 7 - 2 = 5
+3. SB DM[3], ACC		// DM[3] = 5
+4. LB ACC, DM[9]		// ACC = 245
+5. NT ACC				// ACC = 10
+6. AND ACC, DM[3]		// ACC = 10 AND 5 = 0
+7. NT ACC		// ACC = NOT ACC = 255
+8. SBX DM[DM[4]], ACC	// DM[DM[4]]= DM[7] = 255
+9. LBX ACC, DM[DM[5]]	// ACC = DM[DM[5]] = DM[3] = 5
+10. ADX ACC, DM[DM[4]]	// ACC = 5 + DM[DM[4]] = 5 + DM[7] = 5 + 255 = 4 (overflow = 1)
+11. CMP ACC, DM[8]		// ACC = 4, DM[8] = 4; --> EQ = 1, NEQ = 0
+12. JNE 255				// If NEQ = 1, then jump to instruction @ IM[255]
+13. IN DM[6], IO_BUS	// externalIn (extIn) was set to 7 in the testbench, so that DM[6] = 7
+14. LB ACC, DM[6]		// ACC = 7
+15. CMP ACC, DM[1]		// ACC = 7, DM[1] = 7; --> EQ = 1, NEQ = 0
+16. JEQ 18				// If EQ = 1, then jump to instruction @ IM[18]
+17. SB DM[0], ACC		// DM[0] = ACC = 7
+18. J 255				// Jump to instruction @ IM[255]
+19. SB DM[2], ACC		// DM[2] = 7
+.
+.
+.
+255. J 255		// Jump for ever
