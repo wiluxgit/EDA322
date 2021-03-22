@@ -61,15 +61,14 @@ architecture implem of E_PBus is
 	signal l_bus_has_mutiple_input: STD_LOGIC;
 	signal l_allow_bus_to_open: STD_LOGIC;
 	signal l_before_output: STD_LOGIC_VECTOR(7 downto 0);
+	signal l_priorityInput: STD_LOGIC_VECTOR(3 downto 0);
 	
 	begin
+		l_priorityInput <= PBUS_extdataSEL&PBUS_accSEL&PBUS_dataSEL&PBUS_instrSEL;
 		PART_priority_select: 
 		entity work.E_priority_4to2(behavioral)
 		port map(
-			priority_4to2_inp(0) => PBUS_instrSEL,
-			priority_4to2_inp(1) => PBUS_dataSEL,
-			priority_4to2_inp(2) => PBUS_accSEL,
-			priority_4to2_inp(3) => PBUS_extdataSEL,
+			priority_4to2_inp => l_priorityInput,
 			priority_4to2_out => l_priority_bin,
 			priority_4to2_error_mutiple => l_bus_has_mutiple_input,
 			priority_4to2_input_exists => l_bus_has_input

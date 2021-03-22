@@ -52,47 +52,35 @@ architecture Behavioral of procController is
 	begin
 		process(CLK, ARESETN) begin
 			if ARESETN = '0' then
-				pcSel <= '0';
-				pcLd <= '0';
-				--instrLd <= '0';
-				addrMd <= '0';
-				dmWr <= '0';
-				dataLd <= '0';
-				flagLd <= '0';
-				accSel <= '0';
-				accLd <= '0';
-				im2bus <= '0';
-				dmRd <= '0';
-				acc2bus <= '0';
-				ext2bus <= '0';
-				dispLd <= '0';
-				--aluMd <= "01";
+				l_state <= Q_FETCH;
+				
+			elsif rising_edge(clk) then
+				l_state <= l_nextState;
+			end if;
+		end process;
+			
+		process(l_state, ARESETN) begin	
+			pcSel <= '0';
+			pcLd <= '0';
+			addrMd <= '0';
+			dmWr <= '0';
+			dataLd <= '0';
+			flagLd <= '0';
+			accSel <= '0';
+			accLd <= '0';
+			dmRd <= '0';
+			dispLd <= '0';
+			
+			if ARESETN = '0' then			
 				l_nextState <= Q_FETCH;
 				
-			elsif rising_edge(clk) then --TODO!!! VIKTIGT, ändra state efter operation
-				pcSel <= '0';
-				pcLd <= '0';
-				--instrLd <= '0';
-				addrMd <= '0';
-				dmWr <= '0';
-				dataLd <= '0';
-				flagLd <= '0';
-				accSel <= '0';
-				accLd <= '0';
-				im2bus <= '0';
-				dmRd <= '0';
-				acc2bus <= '0';
-				ext2bus <= '0';
-				dispLd <= '0';
-				--aluMd <= "01";
+			else
 				
-				l_state <= l_nextState;
+				--l_nextState <= l_state;
 				
 				case l_state is 
 				-- ================= Fetch ================= --
-				when Q_FETCH => 
-					l_op <= opcode;
-					
+				when Q_FETCH => 					
 					case l_op is
 						when "0010" => l_nextState <= Q_MEMORY;
 						when "1111" => l_nextState <= Q_EXECUTE;
@@ -199,13 +187,15 @@ architecture Behavioral of procController is
 						addrMd <= '1';
 						dmWr <= '1';
 					end if;
-					l_nextState <= Q_EXECUTE;	
-				end case;							
+					l_nextState <= Q_FETCH;	
+				end case;
 			end if;
 		end process;
 		
 		-- ================= STATELESS EXPRESSIONS ================ --
 		instrLd <= '1';
+		l_op <= opcode;
+		
 		with l_op select acc2bus <=
 				'1' when "0010",
 				'1' when "0100",
@@ -226,7 +216,7 @@ architecture Behavioral of procController is
 				"11" when "1001",
 				"10" when "1010",
 				"00" when "1111",
-				"ZZ" when others;
+				"00" when others;
 			
 			
 			

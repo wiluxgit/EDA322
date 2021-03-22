@@ -213,7 +213,7 @@ architecture structural of EDA322_processor is
 			dIn => l_nxtpc,
 			clk => CLK,
 			aresetn => ARESETN,
-			loadE => l_proc_pcSel,
+			loadE => l_proc_pcLd,
 			output => l_pc
 		);
 		

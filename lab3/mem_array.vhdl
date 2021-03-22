@@ -36,13 +36,13 @@ architecture behavioral of mem_array is
 	end function;
 
 	signal memory : MEMORY_ARRAY := init_memory_wfile(init_file);
-
+				
 	begin
+		output <= memory(to_integer(unsigned(addr)));
+	
 		process(clk, we)
 		begin
-			if we = '0' then
-				output <= memory(to_integer(unsigned(addr)));
-			elsif rising_edge(clk) then
+			if rising_edge(clk) then
 				if we = '1' then
 					memory(to_integer(unsigned(addr))) <= dIn;
 				end if;
