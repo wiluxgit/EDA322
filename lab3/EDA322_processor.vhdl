@@ -288,6 +288,7 @@ architecture structural of EDA322_processor is
 			we => l_proc_dmWr,
 			output => l_MemDataOut
 		);
+		l_dataIn <= l_BusOut;
 		
 		DEEX:
 		entity work.E_register(behavioral)

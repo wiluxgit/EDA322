@@ -36,7 +36,7 @@ architecture Behavioral of procController is
 	constant oLOADBYTE:       STD_LOGIC_VECTOR(3 downto 0) := "0001";
 	constant oSTOREBYTE:      STD_LOGIC_VECTOR(3 downto 0) := "0010";
 	constant oLOADBYTEINDEX:  STD_LOGIC_VECTOR(3 downto 0) := "0011";
-	constant oSTOREBYTEINDEX: STD_LOGIC_VECTOR(3 downto 0) := "0010";
+	constant oSTOREBYTEINDEX: STD_LOGIC_VECTOR(3 downto 0) := "0100";
 	constant oINPUT:          STD_LOGIC_VECTOR(3 downto 0) := "0101";
 	constant oADD:            STD_LOGIC_VECTOR(3 downto 0) := "0110";
 	constant oADDINDEX:       STD_LOGIC_VECTOR(3 downto 0) := "0111";
@@ -54,7 +54,7 @@ architecture Behavioral of procController is
 			if ARESETN = '0' then
 				l_state <= Q_FETCH;
 				
-			elsif rising_edge(clk) then
+			elsif falling_edge(clk) then
 				l_state <= l_nextState;
 			end if;
 		end process;
@@ -80,15 +80,8 @@ architecture Behavioral of procController is
 				
 				case l_state is 
 				-- ================= Fetch ================= --
-				when Q_FETCH => 					
-					case l_op is
-						when "0010" => l_nextState <= Q_MEMORY;
-						when "1111" => l_nextState <= Q_EXECUTE;
-						when others => l_nextState <= Q_DECODE;
-					end case;
-					
-				-- ================= DECODE ================ --
-				when Q_DECODE => 
+				when Q_FETCH => 	
+					--> to DE				
 					if (
 							l_op =    "0000" OR l_op = "0001" OR l_op = "0011" OR l_op = "0100" OR l_op = "0110" 
 							OR l_op = "0111" OR l_op = "1000" OR l_op = "1001" OR l_op = "1010"	OR l_op = "1010"
@@ -100,7 +93,6 @@ architecture Behavioral of procController is
 						pcLd <= '1';
 						pcSel <= '1';
 					
-					--Jeq/Jne
 					elsif l_op = "1101" then -- jeq
 						pcLd <= '1';
 						if eq = '1' then 
@@ -114,43 +106,35 @@ architecture Behavioral of procController is
 							pcSel <= '1';
 						else 
 							pcSel <= '0';
-						end if;
+						end if;			
+
+					--> to ME
+					elsif l_op = "0010" then
+						pcLd <= '1';
+						dmWr <= '1';
+					
+					--> tp EX
+					elsif l_op = "1111" then
+						pcLd <= '1';
+						dispLd <= '1';
 					end if;
 					
+					--
 					case l_op is
-						when "0011" => l_nextState <= Q_DECODE2;
-						when "0111" => l_nextState <= Q_DECODE2;
-						when "0101" => l_nextState <= Q_FETCH;
-						when "1101" => l_nextState <= Q_FETCH;
-						when "1110" => l_nextState <= Q_FETCH;
-						when others => l_nextState <= Q_EXECUTE;
-					end case;
-				
-				-- ================= DECODE* ================ --
-				when Q_DECODE2 => 
+						when "0010" => l_nextState <= Q_MEMORY;
+						when "1111" => l_nextState <= Q_EXECUTE;
+						when others => l_nextState <= Q_DECODE;
+					end case;					
+					
+				-- ================= DECODE ================ --
+				when Q_DECODE => 
+					--> to DE*
 					if (l_op = "0011" or l_op = "0111") then
 						addrMd <= '1';
 						dataLd <= '1';
-					end if;
 					
-					l_nextState <= Q_EXECUTE;
-						
-				-- ================= EXECUTE ================ --
-				when Q_EXECUTE => 
-					if l_op = "1111" then
-						pcLd <= '1';
-						dispLd <= '1';
-					elsif l_op = "0011" then
-						pcLd <= '1';
-						accSel <= '1';
-						accLd <= '1';
-						dmRd <= '1';
-					elsif l_op = "0111" then
-						pcLd <= '1';
-						flagLd <= '1';
-						accLd <= '1';
-						dmRd <= '1';
-					elsif (l_op="0000" or l_op="0100" or l_op="0110" or l_op="0111" or l_op="1000" or l_op="1010") then
+					--> to EX					
+					elsif (l_op="0000" or l_op="0110" or l_op="0111" or l_op="1000" or l_op="1010") then
 						pcLd <= '1';
 						flagLd <= '1';
 						accLd <= '1';
@@ -164,12 +148,53 @@ architecture Behavioral of procController is
 						pcLd <= '1';
 						flagLd <= '1';
 						dmRd <= '1';
+					elsif l_op="0100" then
+						pcLd <= '1';
+						addrMd <= '1';
+						dmWr <= '1';					
 					elsif l_op = "1001" then
 						pcLd <= '1';
 						flagLd <= '1';
 						accLd <= '1';
 						dmRd <= '1'; -- would be in state "X" if litteral from pdf. but we assume that is mistyped
 						             -- also makes sense on what NOT is supposed to do
+					end if;
+					
+					--> to FE
+					-- 0101 1101 1110, but does nothing
+					
+					case l_op is
+						when "0100" => l_nextState <= Q_MEMORY;
+						when "0011" => l_nextState <= Q_DECODE2;
+						when "0111" => l_nextState <= Q_DECODE2;
+						when "0101" => l_nextState <= Q_FETCH;
+						when "1101" => l_nextState <= Q_FETCH;
+						when "1110" => l_nextState <= Q_FETCH;
+						when others => l_nextState <= Q_EXECUTE;
+					end case;
+				
+				-- ================= DECODE* ================ --
+				when Q_DECODE2 => 					
+					if l_op = "0011" then
+						pcLd <= '1';
+						accSel <= '1';
+						accLd <= '1';
+						dmRd <= '1';
+					elsif l_op = "0111" then
+						pcLd <= '1';
+						flagLd <= '1';
+						accLd <= '1';
+						dmRd <= '1';
+					end if;
+						
+					l_nextState <= Q_EXECUTE;
+						
+				-- ================= EXECUTE ================ --
+				when Q_EXECUTE => 
+					if l_op = "0100" then
+						pcLd <= '1';
+						addrMd <= '1';
+						dmWr <= '1';
 					end if;
 					
 					case l_op is
@@ -179,15 +204,8 @@ architecture Behavioral of procController is
 					
 				-- ================= MEMEORY ================ --
 				when Q_MEMORY => 
-					if l_op = "0010" then
-						pcLd <= '1';
-						dmWr <= '1';
-					elsif l_op = "0100" then
-						pcLd <= '1';
-						addrMd <= '1';
-						dmWr <= '1';
-					end if;
 					l_nextState <= Q_FETCH;	
+				
 				end case;
 			end if;
 		end process;
