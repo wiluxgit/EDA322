@@ -124,23 +124,24 @@ architecture structural of EDA322_processor is
 	end component;
 	
 	
-	signal l_nxtpc: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_pc: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_PCIncrOut: STD_LOGIC_VECTOR(7 downto 0);
+	signal l_nxtpc: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+	signal l_pc: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+	signal l_PCIncrOut: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
 	
-	signal l_InstrMemOut: STD_LOGIC_VECTOR(11 downto 0);	
-	signal l_Instruction: STD_LOGIC_VECTOR(11 downto 0);
+	signal l_InstrMemOut: STD_LOGIC_VECTOR(11 downto 0) := "000000000000";	
+	signal l_Instruction: STD_LOGIC_VECTOR(11 downto 0) := "000000000000";
+	
 	alias l_opFromInstruction: STD_LOGIC_VECTOR(3 downto 0) is l_Instruction(11 downto 8);
 	alias l_addrFromInstruction: STD_LOGIC_VECTOR(7 downto 0) is l_Instruction(7 downto 0);
 	
-	signal l_MemData_Addr: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_MemDataOut: STD_LOGIC_VECTOR(7 downto 0);	
-	signal l_MemDataOutReged: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_dataIn: STD_LOGIC_VECTOR(7 downto 0);
+	signal l_MemData_Addr: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+	signal l_MemDataOut: STD_LOGIC_VECTOR(7 downto 0) := "00000000";	
+	signal l_MemDataOutReged: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+	signal l_dataIn: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
 	
-	signal l_OutFromAlu: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_OutFromAcc: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_InToAcc: STD_LOGIC_VECTOR(7 downto 0);
+	signal l_OutFromAlu: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+	signal l_OutFromAcc: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+	signal l_InToAcc: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
 	
 	signal l_FlagInp: STD_LOGIC_VECTOR(3 downto 0);
 	alias l_AluFlag_Carry:  STD_LOGIC is l_FlagInp(0);
@@ -154,9 +155,9 @@ architecture structural of EDA322_processor is
 	alias l_Regged_AluFlag_NEQ:    STD_LOGIC is l_Regged_Flag(2);
 	alias l_Regged_AluFlag_isZero: STD_LOGIC is l_Regged_Flag(3);
 	
-	signal l_Bus: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_BusOut: STD_LOGIC_VECTOR(7 downto 0);
-	signal l_Bus_errSig: STD_LOGIC;
+	signal l_Bus: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+	signal l_BusOut: STD_LOGIC_VECTOR(7 downto 0) := "00000000";
+	signal l_Bus_errSig: STD_LOGIC := '0';
 	
 	-- signal l_D_pc2seg: STD_LOGIC_VECTOR(7 downto 0);
 	-- signal l_D_instr2seg: STD_LOGIC_VECTOR(12 downto 0);
@@ -169,21 +170,21 @@ architecture structural of EDA322_processor is
 	-- signal l_D_flag2seg: STD_LOGIC_VECTOR(7 downto 0);
 	-- signal l_D_disp2seg: STD_LOGIC_VECTOR(7 downto 0);
 	
-	signal l_proc_pcSel: STD_LOGIC;
-	signal l_proc_pcLd: STD_LOGIC;
-	signal l_proc_instrLd: STD_LOGIC;
-	signal l_proc_addrMd: STD_LOGIC;
-	signal l_proc_dmWr: STD_LOGIC;
-	signal l_proc_dataLd: STD_LOGIC;
-	signal l_proc_flagLd: STD_LOGIC;
-	signal l_proc_accSel: STD_LOGIC;
-	signal l_proc_accLd: STD_LOGIC;
-	signal l_proc_im2bus: STD_LOGIC;
-	signal l_proc_dmRd: STD_LOGIC;
-	signal l_proc_acc2bus: STD_LOGIC;
-	signal l_proc_ext2bus: STD_LOGIC;
-	signal l_proc_dispLd: STD_LOGIC;
-	signal l_proc_aluMd: STD_LOGIC_VECTOR(1 downto 0);
+	signal l_proc_pcSel: STD_LOGIC := '0';
+	signal l_proc_pcLd: STD_LOGIC := '0';
+	signal l_proc_instrLd: STD_LOGIC := '0';
+	signal l_proc_addrMd: STD_LOGIC := '0';
+	signal l_proc_dmWr: STD_LOGIC := '0';
+	signal l_proc_dataLd: STD_LOGIC := '0';
+	signal l_proc_flagLd: STD_LOGIC := '0';
+	signal l_proc_accSel: STD_LOGIC := '0';
+	signal l_proc_accLd: STD_LOGIC := '0';
+	signal l_proc_im2bus: STD_LOGIC := '0';
+	signal l_proc_dmRd: STD_LOGIC := '0';
+	signal l_proc_acc2bus: STD_LOGIC := '0';
+	signal l_proc_ext2bus: STD_LOGIC := '0';
+	signal l_proc_dispLd: STD_LOGIC := '0';
+	signal l_proc_aluMd: STD_LOGIC_VECTOR(1 downto 0) := "00";
 	
 	begin 
 		
@@ -278,7 +279,7 @@ architecture structural of EDA322_processor is
 		generic map(
 			data_width => 8,
 			addr_width => 8,
-			init_file => "inst_mem.mif"
+			init_file => "data_mem.mif"
 		)
 		port map (
 			addr => l_MemData_Addr,

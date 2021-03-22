@@ -63,7 +63,7 @@ signal zero: std_logic;
 begin
 
 -- Design Under Test (DUT) instantiation
-EDA322_dut : EDA322_processor port map (
+EDA322_dut : entity work.EDA322_processor(structural) port map (
            externalIn => "00000111",
 	   CLK => CLK,
 	   master_load_enable => master_load_enable, -- flipflop load enables for single step mode
